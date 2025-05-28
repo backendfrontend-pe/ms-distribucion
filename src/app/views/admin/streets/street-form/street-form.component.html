@@ -1,0 +1,38 @@
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+    <h2>{{ editMode ? 'Editar Calle' : 'Registrar Nueva Calle' }}</h2>
+
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input
+        id="name"
+        type="text"
+        formControlName="name"
+        placeholder="Ingrese el nombre"
+        [class.invalid]="form.get('name')?.invalid && form.get('name')?.touched"
+      />
+      <div class="error" *ngIf="form.get('name')?.invalid && form.get('name')?.touched">
+        SOLO SE ACEPTAN LETRAS, NÚMEROS Y ESPACIOS
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="zoneId">Zona:</label>
+     <select formControlName="zoneId">
+  <option value="">Seleccione una zona</option>
+  <option *ngFor="let zone of zonas" [value]="zone.zoneId">{{ zone.name }}</option>
+</select>
+
+      <div class="error" *ngIf="form.get('zoneId')?.invalid && form.get('zoneId')?.touched">
+        EL CAMPO ES OBLIGATORIO
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" [disabled]="form.invalid">
+        {{ editMode ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <button type="button" (click)="cancelar()">Cancelar</button>
+    </div>
+  </form>
+</div>

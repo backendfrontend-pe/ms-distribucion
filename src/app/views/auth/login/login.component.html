@@ -1,0 +1,37 @@
+<div class="login-wrapper">
+  <div class="login-container">
+    <img
+      src="https://img.pikbest.com/origin/09/23/31/696pIkbEsTchC.png!sw800"
+      alt="Login Banner"
+      class="login-banner"
+    />
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="login()">
+      <label for="username">Usuario:</label>
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="username"
+        name="username"
+        placeholder="Ingrese su usuario"
+        required
+      />
+
+      <label for="password">Contraseña:</label>
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="password"
+        name="password"
+        placeholder="Ingrese su contraseña"
+        required
+      />
+
+      <button type="submit" [disabled]="isLoading">
+        {{ isLoading ? 'Validando...' : 'Entrar' }}
+      </button>
+
+      <p *ngIf="error" class="error-message">{{ error }}</p>
+    </form>
+  </div>
+</div>

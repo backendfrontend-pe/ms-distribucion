@@ -1,0 +1,62 @@
+<h2 class="titulo-zonas">
+  {{ mostrarInactivas ? 'Zonas Inactivas' : 'Zonas Activas' }}
+</h2>
+
+<div class="actions" style="text-align: right; margin-bottom: 1rem;">
+  <button *ngIf="!mostrarInactivas" (click)="abrirModal()">➕ Agregar Zona</button>
+  <button (click)="alternarZonas()">
+    {{ mostrarInactivas ? '🔄 Ver Activas' : '🗂️ Ver Inactivas' }}
+  </button>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>Sede ID</th>
+      <th>Estado</th>
+      <th>Fecha de Registro</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let zone of zones">
+      <td>{{ zone.name }}</td>
+      <td>{{ zone.description }}</td>
+      <td>{{ zone.officeId }}</td>
+      <td>{{ formatStatus(zone.status) }}</td>
+      <td>{{ formatDate(zone.dateRecord) }}</td>
+      <td>
+        <!-- Acciones para zonas activas -->
+        <button *ngIf="!mostrarInactivas" (click)="onEdit(zone)" title="Editar">✏️</button>
+        <button *ngIf="!mostrarInactivas" (click)="onDelete(zone)" title="Eliminar">🗑️</button>
+
+        <!-- Acción para zonas inactivas -->
+        <button *ngIf="mostrarInactivas" (click)="onActivate(zone)" title="Reactivar">✅ Reactivar</button>
+      </td>
+    </tr>
+
+    <!-- Mensaje cuando no hay zonas -->
+    <tr *ngIf="zones?.length === 0">
+      <td colspan="6" style="text-align: center;">
+        {{ mostrarInactivas
+           ? 'No hay zonas inactivas registradas'
+           : 'No hay zonas activas registradas' }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="mostrarModal">
+  <div class="modal">
+    <h3>{{ editMode ? 'Editar Zona' : 'Registrar Nueva Zona' }}</h3>
+    <app-zone-form
+      [editMode]="editMode"
+      [zoneId]="editingZoneId"
+      (cerrar)="cerrarModal()"
+      (zonaCreada)="recargarLista()"
+    ></app-zone-form>
+  </div>
+</div>

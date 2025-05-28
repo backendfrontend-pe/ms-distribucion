@@ -1,0 +1,47 @@
+<h2 class="titulo-calles">
+  {{ mostrarInactivas ? 'Calles Inactivas' : 'Calles Activas' }}
+</h2>
+
+<div class="actions" style="text-align: right; margin-bottom: 1rem;">
+  <button *ngIf="!mostrarInactivas" (click)="abrirModal()">➕ Agregar Calle</button>
+  <button (click)="alternarCalles()">
+    {{ mostrarInactivas ? '🔄 Ver Activas' : '🗂️ Ver Inactivas' }}
+  </button>
+</div>
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Zona Nombre</th>
+      <th>Estado</th>
+      <th>Fecha de Registro</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let street of streets; trackBy: trackByStreetId">
+      <td>{{ street.name }}</td>
+      <td>{{ street.zoneName }}</td>
+      <td>{{ formatStatus(street.status) }}</td>
+      <td>{{ formatDate(street.dateRecord) }}</td>
+      <td>
+        <button *ngIf="!mostrarInactivas" (click)="onEdit(street)" title="Editar">✏️</button>
+        <button *ngIf="!mostrarInactivas" (click)="onDeactivate(street)" title="Eliminar">🗑️</button>
+        <button *ngIf="mostrarInactivas" (click)="onActivate(street)" title="Reactivar">✅ Reactivar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal-backdrop" *ngIf="mostrarModal">
+  <div class="modal">
+    <h3>{{ editMode ? 'Editar Calle' : 'Registrar Nueva Calle' }}</h3>
+<app-street-form
+  [editMode]="editMode"
+  [streetId]="editingStreetId"
+  (guardado)="recargarLista()"
+  (cerrar)="cerrarModal()"
+></app-street-form>
+  </div>
+</div>

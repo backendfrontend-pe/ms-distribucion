@@ -1,0 +1,18 @@
+<h2>{{ isEditMode ? 'Editar Zona' : 'Crear Zona' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div>
+    <label>Nombre:</label>
+    <input formControlName="name" />
+  </div>
+
+  <div>
+    <label>Descripción:</label>
+    <input formControlName="description" />
+  </div>
+
+  <div class="button-group">
+    <button type="submit">{{ isEditMode ? 'Actualizar' : 'Guardar' }}</button>
+    <button type="button" (click)="cancel()">Cancelar</button>
+  </div>
+</form>

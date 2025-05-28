@@ -1,0 +1,114 @@
+/* Tipografía y diseño base */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Título de secciones */
+.titulo-zonas {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: #0d47a1;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #0d47a1;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+/* Estilo de tabla */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: white;
+}
+
+th, td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #e3f2fd;
+  font-weight: 600;
+  color: #0d47a1;
+}
+
+tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+/* Botones */
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 2px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button[title="Eliminar"] {
+  background-color: #d32f2f;
+}
+
+button[title="Eliminar"]:hover {
+  background-color: #b71c1c;
+}
+
+button[title="Reactivar"] {
+  background-color: #388e3c;
+}
+
+button[title="Reactivar"]:hover {
+  background-color: #2e7d32;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 33, 33, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 500px;
+  max-width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.modal h3 {
+  margin-top: 0;
+  color: #0d47a1;
+}
+
+/* Zona de acciones */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

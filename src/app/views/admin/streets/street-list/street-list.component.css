@@ -1,0 +1,167 @@
+/* Tipografía general */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9fafe;
+  color: #333;
+  margin: 0;
+  padding: 1rem;
+}
+
+/* Estilos de tabla */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+}
+
+th, td {
+  padding: 14px 18px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+th {
+  background-color: #e3f2fd;
+  font-weight: 600;
+  color: #0d47a1;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+tbody tr:hover {
+  background-color: #f1f5f9;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+td {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* Botones */
+button {
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  margin: 0 3px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+button[title="Eliminar"] {
+  background-color: #e53935;
+}
+
+button[title="Eliminar"]:hover {
+  background-color: #c62828;
+}
+
+button[title="Reactivar"] {
+  background-color: #43a047;
+}
+
+button[title="Reactivar"]:hover {
+  background-color: #388e3c;
+}
+
+/* Iconos en botones (si decides usar íconos tipo fontawesome, puedes integrarlos aquí) */
+button i {
+  font-size: 1rem;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 33, 33, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  min-width: 420px;
+  max-width: 90%;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Título principal */
+h2 {
+  font-size: 1.6rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+/* Título de sección como "Calles Activas" */
+.titulo-calles,
+.titulo-seccion {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: #1a237e;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #1a237e;
+  padding-bottom: 0.5rem;
+  display: inline-block;
+}
+
+/* Zona de acciones */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  th, td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .modal {
+    padding: 1.5rem;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
